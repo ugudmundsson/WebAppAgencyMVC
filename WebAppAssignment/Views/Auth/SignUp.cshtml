@@ -1,0 +1,64 @@
+﻿@model RegistrationModel
+
+@{
+    Layout = "_LoginLayout";
+}
+
+<div class="center-screen bg-color">
+    <div class="Box-Registration">
+        <div class="accounttop">
+            <div>
+                <h1> Create Account</h1>
+            </div>
+            <div class="google">
+                <a href="https://www.google.se"><img src="/Images/LoginwithGoogle.svg" /></a>
+            </div>
+            <div>
+                <img src="/Images/OR.svg" />
+            </div>
+        </div>
+        <form method="post" asp-controller="Auth" asp-action="SignUp" novalidate>
+          <div>
+                <label asp-for="FirstName" class="signin-label"></label>
+                <input asp-for="FirstName" class="logininput" />
+                <span asp-validation-for="FirstName"></span>
+            </div>
+            <div>
+                <label asp-for="LastName" class="signin-label"></label>
+                <input asp-for="LastName" class="logininput" />
+                <span asp-validation-for="LastName"></span>
+            </div>
+            <div>
+                <label asp-for="Email" class="signin-label"></label>
+                <input asp-for="Email" class="logininput" />
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div>
+                <label asp-for="Password" class="signin-label"></label>
+                <input asp-for="Password" class="logininput" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div>
+                <label asp-for="ConfirmPassword" class="signin-label"></label>
+                <input asp-for="ConfirmPassword" class="logininput" />
+                <span asp-validation-for="ConfirmPassword"></span>
+            </div>
+            <div class="terms">
+                <lable>
+                    <input type="checkbox" class="checkbox" />
+                    <span>I accept</span>
+                </lable>
+                <div>
+                    <a class="forgot">Terms and Conditions</a>
+                </div>
+            </div>
+                <button type="submit" class="submit-btn btn-registration">Create Account</button>
+            <div class="already-text">
+                <span>Already have an account?</span>
+                <a class="already-account" asp-controller="Auth" asp-action="SignIn">Login</a>
+            </div>
+      </form>
+    </div>
+
+
+</div>

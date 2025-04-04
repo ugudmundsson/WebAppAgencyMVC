@@ -1,0 +1,223 @@
+﻿@import url("../css/site.css");
+
+.hero-container {
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.projectnav {
+    margin-top: 2rem;
+    display: flex;
+    gap: 3rem;
+}
+
+.projectnav a {
+    text-decoration: none;
+    color: var(--body-light);
+    font-weight: var(--font-semibold);
+    &:hover
+    {
+    font-size: 15px;
+    background: transparent;
+    border-radius: 20px 20px 0 0;
+    height: 3px;
+    box-shadow: 0 28px 0 0 var(--blue-accent);
+    font-family: sans-serif;
+    }
+}
+
+.graynavline {
+    height: 2px;
+    background-color: var(--border-color);
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 2rem;
+}
+
+.project-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-btn {
+    width: 153px;
+    height: 48px;
+    color: var(--font-white);
+    background-color: var(--blue-accent);
+    border: none;
+    border-radius: 15px;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+
+/*------------ OVERLAY-BOX ---------*/
+.overlay {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay-content {
+    position: relative;
+    margin: auto;
+    padding: 30px;
+    width: 550px;
+    height: 1131px;
+    background-color: white;
+    border-radius: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+
+
+/* ---------OVERLAY - ADDPROJECT---------*/
+
+.hide {
+    display: none;
+}
+
+.upload {
+    display: grid;
+    place-items: center;
+    height: 20vh;
+    
+}
+
+
+
+.image-previewer {
+    border: 1px dashed var(--gray-600);
+    border-radius: 40px;
+    border-width: 2px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.icon-circle {
+    background-color: var(--gray-600);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+/* --------------------   EDITOR -------------------*/
+
+.description-textarea {
+    width: 490px;
+    height: 140px;
+    border-radius: 15px;
+    margin-bottom: 3rem;
+    border-color: var(--border-color);
+
+}
+
+#description-editor {
+    border-radius: 15px 15px 0px 0px;
+    border: 1px solid var(--border-color);
+    font-size: 16px;
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: var(--font-regular);
+    &:active
+{
+    outline: none;
+    box-shadow: 0 0 5px var(--blue-accent)
+}
+}
+
+
+#Description {
+        display: none;
+    }
+
+
+#description-toolbar {
+    border-radius: 0px 0px 15px 15px;
+    border: 1px solid var(--border-color);
+}
+
+
+
+
+
+
+/* --------------------   EDITOR -------------------*/
+.create-btn {
+    width: 490px;
+    height: 48px;
+    border-radius: 15px;
+    border: none;
+    background-color: var(--blue-accent);
+    color: var(--font-white);
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.status-date {
+    display: flex;
+    gap: 25px;
+}
+
+.start-end-date {
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    width: 233px;
+    height: 48px;
+    padding-left: 10px;
+    font-size: 16px;
+    color: var(--body-light);
+    &:focus
+{
+    outline: none;
+    box-shadow: 0 0 5px var(--blue-accent)
+}
+
+
+}
+
+.addproject-input {
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    width: 490px;
+    height: 48px;
+    padding-left: 10px;
+    font-size: 16px;
+    color: var(--body-light);
+    &:focus
+
+{
+    outline: none;
+    box-shadow: 0 0 5px var(--blue-accent)
+}
+}

@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebAppAgency</title>
+    <script type="importmap"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="/js/site.js"></script>
+    <script src="https://kit.fontawesome.com/6d23212c3c.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/projects.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/cards.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/hero.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/teammembers.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebAppAgency.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="hero container" >
+       
+        
+        
+        <div class="sidenav">
+            <div>
+                <a class="sidenav-a" asp-controller="Hero" asp-action="Hero">
+                    <div class="sidenavlogo">
+                         <img src="~/Images/SidebarLogo.svg" />
+                         <h3>Alpha</h3>
+                    </div>
+                </a>
+            </div>
+            <nav class="sidenav-grp">
+                <div class="sidenav-btn">
+                    <a class="nav-link" asp-controller="Projects" asp-action="Projects">
+                        <i class="fa-solid fa-briefcase"></i>
+                        Projects
+                    </a>
+                </div>
+                <div class="sidenav-btn">
+                    <a class="nav-link" asp-controller="TeamMembers" asp-action="TeamMembers">
+                        <i class="fa-solid fa-people-group"></i>
+                        Team Members
+                    </a>
+                </div>
+            </nav>
+        </div>
+        
+        
+        
+        
+
+        <div class="topnav">
+            <div class="searchfield">
+                 <i class="fa-solid fa-magnifying-glass"></i>
+                 <input type="text" class="searchinput" placeholder="Search anything..." />
+            </div>
+            <div class="settings">
+                 <i class="fa-solid fa-bell"></i>
+                 <i class="fa-duotone fa-solid fa-gear"></i>
+                 <img src="/Images/grayline.svg" />
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <button id="logoutBtn" class="logout-btn">
+                        <img src="/Images/portrait1.svg" />
+                    </button>
+                }
+                else
+                {
+                    <div class="btn-border">
+                        <a asp-controller="Auth" asp-action="SignIn" class="signin-here-btn">LOGIN</a>
+                    </div>
+                }
+            </div>
+            @await Html.PartialAsync("Partials/_Logout")
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        <div class="main">
+            @RenderBody()
+        </div>
+        
+    </div>
+    
+</body>
+</html>

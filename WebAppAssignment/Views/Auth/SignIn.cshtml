@@ -1,0 +1,62 @@
+﻿@model LoginModel
+
+@{
+    Layout = "_LoginLayout";
+}
+
+
+<div class="center-screen bg-color">
+
+    <div class="Box">
+            <div class="logintop">
+                <div>
+                <h1> Login </h1>
+                 </div>
+                 <div class="google">
+                     <a href="https://www.google.se"><img src="/Images/LoginwithGoogle.svg" /></a>
+                </div>
+                <div>
+                     <img src="/Images/OR.svg" />
+                 </div>
+            </div>
+        <form class="loginform" asp-action="SignIn" asp-controller="Auth" method="post" novalidate>
+            <div>
+            <label asp-for="Email" class="signin-label"></label>
+            <input asp-for="Email" class="logininput" />
+            <span asp-validation-for="Email"></span>
+            </div>
+            <div>
+            <label asp-for="Password" class="signin-label"></label>
+            <div class="password-container">
+                <input asp-for="Password" class="logininput" />
+                    <div class="password-eye">
+                         <button>
+                            <i class="fa-solid fa-eye"></i>
+                         </button>
+                    </div>
+            </div>
+                <span asp-validation-for="Password"></span>
+            </div>
+       
+        <div class="remember-me checktext">
+                <lable class="checkbox-container">
+                      <input type="checkbox" class="checkbox" />
+                      <span>Remember Me</span>
+                </lable>
+                <div>
+                     <a class="forgot" asp-action="">Forgot Password?</a>
+                 </div>
+            </div>
+            <div class="login-btn">
+            <button type="submit" class="submit-btn">Login</button>
+            </div>
+            <div class="signup">
+                <p>Don't have an account?</p>
+                <a class="signup-text" asp-controller="Auth" asp-action="SignUp">Sign Up</a>
+            </div>
+            </form>
+   </div>
+</div>
+
+
+

@@ -1,0 +1,107 @@
+﻿@model AddProjectModel
+
+
+
+<div id="overlay" class="overlay">
+    <div class="overlay-content">
+        <span class="close-btn" id="closeOverlayBtn"><i class="fa-solid fa-xmark"></i></span>
+        <div>
+            <div>
+                <h3>Add Project</h3>
+            </div>
+           
+            
+            <form method="post" asp-controller="Projects" asp-action="Projects" novalidate>
+                <div class="upload">
+                    <div class="image-previewer">
+                        <div class="icon-circle">
+                            <i class="fa-solid fa-camera"></i>
+                                <img src="" class="image-preview" />
+                                <input asp-for="File" accept="image/*" class="hide" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="ProjectName" class="signin-label"></label>
+                    <input asp-for="ProjectName" class="addproject-input" />
+                    <span asp-validation-for="ProjectName"></span>
+                </div>
+                <div>
+                    <label asp-for="ClientName" class="signin-label"></label>
+                    <input asp-for="ClientName" class="addproject-input" />
+                    <span asp-validation-for="ClientName"></span>
+                </div>
+                <div>
+                    <label asp-for="Description" class="signin-label"></label>
+                    <div class="description-textarea">
+                        <textarea asp-for="Description"></textarea>
+                        <div id="description-editor" class="description-editor"></div>
+                        <div id="description-toolbar">
+                            <span class="ql-formats">
+                                <button class="ql-bold"></button>
+                                <button class="ql-italic"></button>
+                                <button class="ql-underline"></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="status-date">
+                    <div>
+                    <label asp-for="StartDate" class="signin-label"></label>
+                    <input asp-for="StartDate" class="start-end-date" />
+                    <span asp-validation-for="StartDate"></span>
+                    </div>
+                    <div>
+                    <label asp-for="EndDate" class="signin-label"></label>
+                    <input asp-for="EndDate" class="start-end-date" />
+                    <span asp-validation-for="EndDate"></span>
+                    </div>
+                </div>
+                <div>
+                    <label asp-for="Members" class="signin-label"></label>
+                    <input asp-for="Members" class="addproject-input" />
+                    <span asp-validation-for="Members"></span>
+                </div>
+                <div>
+                    <label asp-for="Budget" class="signin-label"></label>
+                    <input asp-for="Budget" class="addproject-input" />
+                    <span asp-validation-for="Budget"></span>
+                </div>
+
+           </form>
+           <div>
+              <button class="create-btn">Create</button>
+           </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        handleDescription('#description-editor', '#description-toolbar', 'Description', '@Html.Raw(ViewBag.RichContent ?? "")')
+    })
+    
+    
+    function handleDescription(descriptionEditorId,  descriptionToolId, textareaId, content) {
+        const textarea = document.getElementById(textareaId)
+
+        const quill = new Quill(descriptionEditorId, {
+            modules: {
+                syntax: true,
+                toolbar: descriptionToolId
+            },
+            placeholder: 'Type something...',
+            theme: 'snow'
+        })
+        
+        if(content)
+            quill.root.innerHTML = content;
+
+        quill.on('text-change', () => {
+            textarea.value = quill.root.innerHTML;
+        })
+    }
+
+
+</script>

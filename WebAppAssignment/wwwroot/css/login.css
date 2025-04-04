@@ -1,0 +1,234 @@
+﻿@import url("../css/site.css");
+
+/*  LOGIN SITE */
+
+
+.accounttop{
+    margin-top: 1rem;
+}
+
+.logintop {
+    margin-top: 7rem;
+}
+
+.google {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.loginform {
+    display: grid;
+}
+
+.Box {
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 600px;
+    height: 700px;
+    border: none;
+    border-radius: 16px;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--white-100);
+    box-shadow: 3px 4px 7px 3px rgb(139, 139, 139, 0.1);
+}
+
+.Box-Registration {
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 600px;
+    height: 900px;
+    border: none;
+    border-radius: 16px;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--white-100);
+    box-shadow: 3px 4px 7px 3px rgb(139, 139, 139, 0.1);
+}
+
+
+
+.logininput {
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    width: 400px;
+    height: 48px;
+    padding-left: 10px;
+    font-size: 16px;
+    color: var(--body-light);
+    &:focus
+
+{
+    outline: none;
+    box-shadow: 0 0 5px var(--blue-accent)
+}
+
+}
+
+.password-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.password-eye {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+    .password-eye button {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .password-eye i {
+        font-size: 15px;
+        color: var(--body-light);
+    }
+
+.submit-btn {
+    width: 400px;
+    height: 48px;
+    border-radius: 15px;
+    border: none;
+    background-color: var(--blue-accent);
+    color: var(--font-white);
+    cursor: pointer;
+    &:active {
+                 background-color: var(--btn-accent)
+             }
+}
+
+.signin-label {
+    display: flex;
+    justify-content: start;
+    font-size: 15px;
+    font-weight: var(--font-semibold);
+    margin-bottom: 5px;
+    margin-top: 1.5rem;
+}
+
+.terms {
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    gap: 5px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.remember-me {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.checktext {
+    font-size: 15px;
+    font-weight: var(--font-semibold);
+}
+
+.checkbox-container {
+}
+
+.checkbox {
+    appearance: none;
+    margin-right: 3px;
+}
+
+input[type='checkbox']:after {
+    width: 17px;
+    height: 17px;
+    border-radius: 5px;
+    position: relative;
+    background-color: var(--white-100);
+    content: '';
+    top: 3px;
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid var(--blue-accent);
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+input[type='checkbox']:checked:after {
+    background-color: var(--blue-accent);
+    width: 17px;
+    height: 17px;
+    top: 4px;
+    border-radius: 5px;
+    color: white;
+    border: 1px solid;
+    transform: rotate(45deg);
+}
+
+
+
+.forgot {
+    text-decoration: none;
+    color: var(--blue-accent);
+    font-weight: var(--font-semibold);
+    font-size: var(--font-regular);
+}
+
+
+.login-text {
+    color: var(--font-white);
+    cursor: pointer;
+    width: 400px;
+    height: 48px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-btn {
+    border-radius: 15px;
+    width: 400px;
+    height: 48px;
+    background-color: var(--blue-accent);
+}
+
+.signup {
+    display: flex;
+    justify-content: center;
+    font-size: var(--font-medium);
+    font-weight: var(--font-semibold);
+    gap: 5px;
+    margin-top: 4rem;
+}
+
+.signup-text {
+    text-decoration: none;
+}
+
+.field-validation-error {
+    color: var(--error-red);
+    font-size: 10px;
+    display: flex;
+    justify-content: start;
+    position: absolute;
+    padding-left: 15px;
+}
+
+.already-text {
+    display: flex;
+    justify-content: center;
+    font-size: var(--font-medium);
+    font-weight: var(--font-semibold);
+    gap: 5px;
+    margin-top: 2rem;
+}
+
+.already-account {
+    text-decoration: none;
+}
+

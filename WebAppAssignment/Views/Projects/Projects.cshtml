@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "_MainLayout";
+    ViewData["Title"] = "Projects";
+}
+
+
+<div class="hero-container">
+    <div class="project-head">
+        
+        <h2>Projects</h2>
+        
+        <button class="project-btn" id="openOverlayBtn">
+            <i class="fa-solid fa-plus"></i>
+            <p>Add Project</p>
+        </button>
+     
+       </div>       
+      
+            <nav>
+                <div class="projectnav">
+                    <a id="all" asp-controller="Status" asp-action="All">ALL [3]</a>
+                    <a id="started" asp-controller="Status" asp-action="Started">STARTED [1]</a>
+                    <a id="completed" asp-controller="Status" asp-action="Completed">COMPLETED [10]</a>
+                </div>
+                <div class="graynavline"></div>
+            </nav>
+            <div class="cards">
+                @await Html.PartialAsync("Partials/_Cards")
+                @await Html.PartialAsync("Partials/_Cards")
+                 @await Html.PartialAsync("Partials/_Cards")
+            </div>
+    @await Html.PartialAsync("Partials/_Addproject")
+</div>

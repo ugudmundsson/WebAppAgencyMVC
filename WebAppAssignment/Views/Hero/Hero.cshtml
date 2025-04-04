@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "_MainLayout";
+    ViewData["Title"] = "Hero";
+}
+
+<div class="hero-container">
+    <div class="hero-header">
+    <h1>Welcome to Alpha Agency</h1>
+    </div>
+    <div class="hero-box">
+        <div>
+             <a asp-controller="Auth" asp-action="SignIn">Login</a><span> for access to Alpha Agency</span>
+        </div>
+        <div>
+            <span>If you dont have a account registrat</span> <a asp-controller="Auth" asp-action="SignUp"> here</a> <span> then</span>
+        </div>
+    </div>
+
+
+</div>
