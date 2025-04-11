@@ -1,6 +1,7 @@
 ﻿using Busniess.Interfaces;
 using Busniess.Models;
 using Data.Interfaces;
+using Data.Repositories;
 using Domain.Extensions;
 using Domain.Models;
 

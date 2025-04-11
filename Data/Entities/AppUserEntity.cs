@@ -12,6 +12,6 @@ public class AppUserEntity : IdentityUser
     [ProtectedPersonalData]
     public string LastName { get; set; } = null!;
 
-    public virtual ICollection<ProjectEntity> Projects { get; set; } = [];
+    public virtual ICollection<ProjectTeamMemberEntity> ProjectTeamMember { get; set; } = [];
 
 }

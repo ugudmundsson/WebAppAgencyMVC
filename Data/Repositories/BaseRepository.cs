@@ -34,7 +34,7 @@ public abstract class BaseRepository<TEntity, T> : IBaseRepository<TEntity, T> w
         {
             _dbSet.Add(entity);
             await _context.SaveChangesAsync();
-            return new RepositoryResult<bool> { Success = false, StatusCode = 201 };
+            return new RepositoryResult<bool> { Success = true, StatusCode = 201 };
         }
         catch (Exception ex)
         {
@@ -66,7 +66,7 @@ public abstract class BaseRepository<TEntity, T> : IBaseRepository<TEntity, T> w
 
         var entities = await query.ToListAsync();
         var resault = entities.Select(entity => entity.MapTo<T>());
-        return new RepositoryResult<IEnumerable<T>> { Success = false, StatusCode = 201, Result = resault };
+        return new RepositoryResult<IEnumerable<T>> { Success = true, StatusCode = 200, Result = resault };
     }
 
 
@@ -91,8 +91,8 @@ public abstract class BaseRepository<TEntity, T> : IBaseRepository<TEntity, T> w
                 : query.OrderBy(sortBy);
 
         var entities = await query.Select(selector).ToListAsync();
-        var resault = entities.Select(entity => entity!.MapTo<TSelect>());
-        return new RepositoryResult<IEnumerable<TSelect>> { Success = true, StatusCode = 200, Result = resault };
+        var result = entities.Select(entity => entity!.MapTo<TSelect>());
+        return new RepositoryResult<IEnumerable<TSelect>> { Success = true, StatusCode = 200, Result = result };
     }
 
 
@@ -117,8 +117,8 @@ public abstract class BaseRepository<TEntity, T> : IBaseRepository<TEntity, T> w
         if (entity == null)
             return new RepositoryResult<T> { Success = false, StatusCode = 404, Error = "Entity not found" };
 
-        var resualt = entity.MapTo<T>();
-        return new RepositoryResult<T> { Success = true, StatusCode = 200, Result = resualt };
+        var result = entity.MapTo<T>();
+        return new RepositoryResult<T> { Success = true, StatusCode = 200, Result = result };
     }
 
 

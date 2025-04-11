@@ -61,7 +61,7 @@
                  <i class="fa-solid fa-bell"></i>
                  <i class="fa-duotone fa-solid fa-gear"></i>
                  <img src="/Images/grayline.svg" />
-                @if (SignInManager.IsSignedIn(User))
+                @if (User.IsInRole("User"))
                 {
                     <button id="logoutBtn" class="logout-btn">
                         <img src="/Images/portrait1.svg" />

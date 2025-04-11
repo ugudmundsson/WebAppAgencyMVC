@@ -4,6 +4,7 @@
     margin-top: 1.5rem;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
+    
 }
 
 .projectnav {
@@ -92,11 +93,8 @@
 .upload {
     display: grid;
     place-items: center;
-    height: 20vh;
-    
+    height: 13vh;
 }
-
-
 
 .image-previewer {
     border: 1px dashed var(--gray-600);
@@ -139,7 +137,7 @@
     border-radius: 15px;
     margin-bottom: 3rem;
     border-color: var(--border-color);
-
+    
 }
 
 #description-editor {
@@ -149,15 +147,10 @@
     font-family: var(--font);
     font-size: 16px;
     font-weight: var(--font-regular);
-    &:active
-{
-    outline: none;
-    box-shadow: 0 0 5px var(--blue-accent)
-}
 }
 
 
-#Description {
+#description {
         display: none;
     }
 
@@ -166,10 +159,6 @@
     border-radius: 0px 0px 15px 15px;
     border: 1px solid var(--border-color);
 }
-
-
-
-
 
 
 /* --------------------   EDITOR -------------------*/

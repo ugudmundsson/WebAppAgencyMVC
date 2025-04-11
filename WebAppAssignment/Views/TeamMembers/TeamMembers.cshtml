@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ProjectViewModel
+
+@{
     Layout = "_MainLayout";
     ViewData["Title"] = "TeamMembers";
 }
@@ -6,8 +8,13 @@
 <div class="hero-container">
     <div>    
         <h1>TeamMember</h1>
-        <div class="teammembers-container">
-        <partial name="Partials/_Users" />
-   </div>
+            <div class="teammembers-container">
+                <div class="cards">
+                    @foreach (var member in Model.Members)
+                    {
+                        <partial name="Partials/_Users" model="member" />
+                    }
+                </div> 
+            </div>
     </div>
 </div>

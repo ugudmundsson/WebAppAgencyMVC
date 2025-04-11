@@ -1,4 +1,5 @@
-﻿
+﻿@using Domain.Models
+@model Project
 
 <div class="card-box">
     <div class="inside-box">
@@ -6,25 +7,41 @@
             <img src="/Images/ProjectIcon1.svg" />
          </div>
          <div class="grid-h6">
-            <h6>App Development</h6>
-            <p>Slack Technologies, Inc.</p>
+            <h6>@Model.ProjectName</h6>
+            <p>@Model.ClientName</p>
          </div>
         <div class="grid-meatballs project-meatballs">
-             <i class="fa-solid fa-ellipsis-vertical meatballs"></i>
+            <div class="meatball-box">
+            <div class="meatballs"></div>
+            <div class="meatballs"></div>
+            </div>
+            <div class="project-meatballs-dropdown-content">
+                <div>
+                    <button class="meatball-btn">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <p>Edit</p>
+                    </button>
+                </div>
+                <div class="meatball-grayline"></div>
+                <div>
+                    <button class="meatball-btn">
+                        <i class="fa-solid fa-trash"></i>
+                        <p>Delete Project</p>
+                    </button>
+                </div>  
+            </div>
          </div>
          <div class="grid-headtext">
-            <p>Create a mobile application on iOS and Android devices.</p>
+            <p>@Model.Description</p>
          </div>
          <div class="grid-time">
          <div class="time-left">
                 <i class="fa-solid fa-clock"></i>
-                <p>1 week left</p>
+                <p>22 days left</p>
          </div>
         </div>
          <div class="grid-portrait">
-              <img src="~/Images/ProjectProfile1.svg" />
-            <img src="~/Images/ProjectProfile1.svg" />
-            <img src="~/Images/ProjectProfile1.svg" />
+         
          </div>
     </div>
 </div>

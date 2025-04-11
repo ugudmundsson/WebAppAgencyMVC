@@ -12,7 +12,7 @@ public static class MapExtensions
 
         var sourceProperties = source.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-        PropertyInfo[] destinationProperties = destination.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+        var destinationProperties = destination.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
         foreach (var destinationProperty in destinationProperties)
         {

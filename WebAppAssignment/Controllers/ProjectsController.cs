@@ -1,38 +1,51 @@
-﻿using Domain.Models;
+﻿using Busniess.Interfaces;
+using Domain.Extensions;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 using WebAppAssignment.Models;
 
 namespace WebAppAssignment.Controllers
 {
-    public class ProjectsController : Controller
+    public class ProjectsController(IProjectService projectService, IStatusService statusService, IAppUserService appUserService) : Controller
     {
 
+        private readonly IProjectService _projectService = projectService;
+        private readonly IStatusService _statusService = statusService;
+        private readonly IAppUserService _appUserService = appUserService;
 
 
-        public IActionResult Projects()
+
+        
+        public async Task<IActionResult> Projects()
         {
-            return View();
+            var projectsResult = await _projectService.GetProjectsAsync();
+            var statusesResult = await _statusService.GetStatusesAsync();
+            var membersResult = await _appUserService.GetAppUsersAsync();
+
+            var project = projectsResult.Result?.ToList() ?? new List<Project>();
+            var status = statusesResult.Result?.ToList() ?? new List<Status>();
+            var member = membersResult.Result?.ToList() ?? new List<AppUser>();
+
+            var projectViewModel = new ProjectViewModel
+            {
+                Statuses = status,
+                Members = member,
+                Form = new AddProjectModel(),
+                Projects = project,
+            };
+            return View(projectViewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Projects(AddProjectModel model)
+        public async Task<IActionResult> Projects(ProjectViewModel model)
         {
-            ViewBag.Error = null;
+         
+            var AddProjectformData = model.Form.MapTo<AddProjectFormData>();
 
-            if (!ModelState.IsValid)
-                return View(model);
-
-            var AddProjectformData = model.MapTo<AddProjectFormData>();
-
-            var result = await _authService.CreateProjectAsync(AddProjectformData);
-            if (result.Success)
-            {
-                return RedirectToAction("SignIn", "Auth");
-            }
-
-
-            ViewBag.Error = result.Error;
-            return View();
+            var result = await _projectService.CreateProjectAsync(AddProjectformData);
+   
+            return RedirectToAction ("Projects");
         }
 
 

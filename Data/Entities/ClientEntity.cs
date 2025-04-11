@@ -9,5 +9,4 @@ public class ClientEntity
 
     public string ClientName { get; set; } = null!;
 
-    public virtual ICollection<ProjectEntity> Projects { get; set; } = [];
 }

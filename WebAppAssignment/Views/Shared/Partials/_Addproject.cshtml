@@ -1,4 +1,4 @@
-﻿@model AddProjectModel
+﻿@model ProjectViewModel
 
 
 
@@ -17,24 +17,24 @@
                         <div class="icon-circle">
                             <i class="fa-solid fa-camera"></i>
                                 <img src="" class="image-preview" />
-                                <input asp-for="File" accept="image/*" class="hide" />
+                                <input asp-for="Form.Image" accept="image/*" class="hide" />
                         </div>
                     </div>
                 </div>
                 <div>
-                    <label asp-for="ProjectName" class="signin-label"></label>
-                    <input asp-for="ProjectName" class="addproject-input" />
-                    <span asp-validation-for="ProjectName"></span>
+                    <label asp-for="Form.ProjectName" class="signin-label"></label>
+                    <input asp-for="Form.ProjectName" class="addproject-input" />
+                    <span asp-validation-for="Form.ProjectName"></span>
                 </div>
                 <div>
-                    <label asp-for="ClientName" class="signin-label"></label>
-                    <input asp-for="ClientName" class="addproject-input" />
-                    <span asp-validation-for="ClientName"></span>
+                    <label asp-for="Form.ClientName" class="signin-label"></label>
+                    <input asp-for="Form.ClientName" class="addproject-input" />
+                    <span asp-validation-for="Form.ClientName"></span>
                 </div>
                 <div>
-                    <label asp-for="Description" class="signin-label"></label>
+                    <label asp-for="Form.Description" class="signin-label"></label>
                     <div class="description-textarea">
-                        <textarea asp-for="Description"></textarea>
+                        <textarea id="description" asp-for="Form.Description"></textarea>
                         <div id="description-editor" class="description-editor"></div>
                         <div id="description-toolbar">
                             <span class="ql-formats">
@@ -47,31 +47,36 @@
                 </div>
                 <div class="status-date">
                     <div>
-                    <label asp-for="StartDate" class="signin-label"></label>
-                    <input asp-for="StartDate" class="start-end-date" />
-                    <span asp-validation-for="StartDate"></span>
+                        <label asp-for="Form.StartDate" class="signin-label"></label>
+                        <input asp-for="Form.StartDate" class="start-end-date" />
+                        <span asp-validation-for="Form.StartDate"></span>
                     </div>
                     <div>
-                    <label asp-for="EndDate" class="signin-label"></label>
-                    <input asp-for="EndDate" class="start-end-date" />
-                    <span asp-validation-for="EndDate"></span>
+                        <label asp-for="Form.EndDate" class="signin-label"></label>
+                        <input asp-for="Form.EndDate" class="start-end-date" />
+                        <span asp-validation-for="Form.EndDate"></span>
                     </div>
                 </div>
                 <div>
                     <label asp-for="Members" class="signin-label"></label>
-                    <input asp-for="Members" class="addproject-input" />
+                    @Html.ListBoxFor(model => model.Members, new MultiSelectList(Model.Members, "Id", "FullName" ), new { @class = "addproject-input" })
                     <span asp-validation-for="Members"></span>
                 </div>
+                    <div> 
+                        <label asp-for="Statuses" class="signin-label"></label>
+                        @Html.DropDownListFor(model => model.Statuses, new SelectList(Model.Statuses, "Id", "StatusName"), "- - Select Status - -", new { @class = "addproject-input" })
+                        <span asp-validation-for="Statuses"></span>
+                    </div>
                 <div>
-                    <label asp-for="Budget" class="signin-label"></label>
-                    <input asp-for="Budget" class="addproject-input" />
-                    <span asp-validation-for="Budget"></span>
+                    <label asp-for="Form.Budget" class="signin-label"></label>
+                    <input type="number" asp-for="Form.Budget" class="addproject-input" />
+                    <span asp-validation-for="Form.Budget"></span>
                 </div>
-
+                <div>
+                    <button type="submit" class="create-btn">Create</button>
+                </div>
            </form>
-           <div>
-              <button class="create-btn">Create</button>
-           </div>
+           
         </div>
     </div>
 </div>
@@ -79,7 +84,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        handleDescription('#description-editor', '#description-toolbar', 'Description', '@Html.Raw(ViewBag.RichContent ?? "")')
+        handleDescription('#description-editor', '#description-toolbar', 'Form.Description', '@Html.Raw(ViewBag.RichContent ?? "")')
     })
     
     
@@ -102,6 +107,4 @@
             textarea.value = quill.root.innerHTML;
         })
     }
-
-
 </script>

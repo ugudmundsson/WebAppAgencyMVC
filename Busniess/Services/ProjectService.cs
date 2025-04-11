@@ -1,6 +1,7 @@
 ﻿using Busniess.Interfaces;
 using Busniess.Models;
 using Data.Entites;
+using Data.Entities;
 using Data.Interfaces;
 using Domain.Extensions;
 using Domain.Models;
@@ -27,6 +28,13 @@ public class ProjectService(IProjectRepository projectRepository, IStatusService
         projectEntity.StatusId = status!.Id;
 
 
+        projectEntity.ProjectTeamMember = formData.AppUserId.Select(userId => new ProjectTeamMemberEntity
+        {
+            AppUserId = userId,
+            ProjectId = projectEntity.Id
+        }).ToList();
+
+
 
         var result = await _projectRepository.AddAsync(projectEntity);
         return result.Success
@@ -44,9 +52,9 @@ public class ProjectService(IProjectRepository projectRepository, IStatusService
             orderByDescending: true,
             sortBy: s => s.CreatedAt,
             where: null,
-            i => i.AppUser,
-            i => i.Status,
-            i => i.Client
+            i => i.ProjectTeamMember,
+            i => i.Status
+            
         );
         return new ProjectResult<IEnumerable<Project>> { Success = true, StatusCode = 200, Result = response.Result };
     }
@@ -59,13 +67,15 @@ public class ProjectService(IProjectRepository projectRepository, IStatusService
         var response = await _projectRepository.GetAsync
         (
             where: i => i.Id == id,
-            i => i.AppUser,
-            i => i.Status,
-            i => i.Client
+            i => i.ProjectTeamMember,
+            i => i.Status
+            
         );
         return response.Success
             ? new ProjectResult<Project> { Success = true, StatusCode = 200, Result = response.Result }
             : new ProjectResult<Project> { Success = false, StatusCode = 404, Error = $"Project '{id}' wasn't found." };
     }
+
+
 
 }

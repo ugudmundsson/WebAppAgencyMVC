@@ -1,4 +1,6 @@
 ﻿.teammembers-container {
-   padding-top: 2rem;
-   padding-left: 2rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding-top: 2rem;
+    padding-left: 2rem;
 }

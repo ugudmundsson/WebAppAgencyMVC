@@ -1,22 +1,43 @@
-﻿<div class="user-card-box">
+﻿@using Domain.Models
+@model AppUser
+
+<div class="user-card-box">
     <div class="inside-box">
         <div class="user-logo">
             <img src="/Images/UserProfile1.svg" />
         </div>
         <div class="user-title">
-            <h4>Ulf Gudmundsson</h4>
+            <h4>@Model.FullName</h4>
         </div>
-        <div class="user-meatballs user-grid-meatballs">
-            <button class="user-meatball"></button>
+        <div class="grid-meatballs project-meatballs">
+            <div class="meatball-box">
+                <div class="meatballs"></div>
+                <div class="meatballs"></div>
+            </div>
+            <div class="project-meatballs-dropdown-content">
+                <div>
+                    <button class="meatball-btn">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <p>Edit</p>
+                    </button>
+                </div>
+                <div class="meatball-grayline"></div>
+                <div>
+                    <button class="meatball-btn">
+                        <i class="fa-solid fa-trash"></i>
+                        <p>Delete Project</p>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="user-jobtask">
             <div class="user-border">
-            <p>Frontend Dev</p>
+            <p> ? Job Title ? </p>
             </div>
         </div>
         <div class="info-profile">
-            <p> u.gudmundsson@gmail.com</p>
-            <p> +46 70 81 82 119</p>
+            <p>@Model.Email</p>
+            <p>? Mobile ?</p>
         </div>
         <div class="message-btn-box">
             <button class="message-btn">

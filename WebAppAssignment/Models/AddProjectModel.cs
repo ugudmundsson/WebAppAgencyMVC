@@ -4,7 +4,10 @@ namespace WebAppAssignment.Models;
 
 public class AddProjectModel
 {
-    
+
+    [DataType(DataType.Upload)]
+    public IFormFile? Image { get; set; }
+
     [Display(Name = "Project Name", Prompt = "Project Name")]
     public string ProjectName { get; set; } = null!;
 
@@ -14,7 +17,7 @@ public class AddProjectModel
 
    
     [Display(Name = "Description", Prompt = "Type something")]
-    public string Description { get; set; } = null!;
+    public string? Description { get; set; }
 
    
     [Display(Name = "Start Date", Prompt = "Start Date")]
@@ -30,14 +33,10 @@ public class AddProjectModel
     [Display(Name = "Members", Prompt = "Members")]
     public string Members { get; set; } = null!;
 
-    
+    [Display(Name = "Status", Prompt = "Status")]
+    public string Status { get; set; } = null!;
+
     [Display(Name = "Budget", Prompt = "$ 0")]
-    public string Budget { get; set; } = null!;
-
-    
-    [Required(ErrorMessage = "Please select a file.")]
-    [DataType(DataType.Upload)]
-    public IFormFile? File { get; set; } = null!;
-
+    public decimal? Budget { get; set; }
 
 }

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ProjectViewModel
+
+@{
     Layout = "_MainLayout";
     ViewData["Title"] = "Projects";
 }
@@ -25,9 +27,9 @@
                 <div class="graynavline"></div>
             </nav>
             <div class="cards">
-                @await Html.PartialAsync("Partials/_Cards")
-                @await Html.PartialAsync("Partials/_Cards")
-                 @await Html.PartialAsync("Partials/_Cards")
+            @foreach (var project in Model.Projects){
+                <partial name="Partials/_Cards" model="project" />
+            }
             </div>
     @await Html.PartialAsync("Partials/_Addproject")
 </div>

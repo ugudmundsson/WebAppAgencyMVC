@@ -87,6 +87,7 @@ html, body {
 
     @media (min-width: 768px) {
         max-width: 720px;
+      
     }
 
     @media (min-width: 1500px) {
@@ -121,10 +122,11 @@ html, body {
         height: 80px;
     }
 
-.hero .main {
-    grid-area: main;
-    border: 1px solid var(--border-color);
-}
+    .hero .main {
+        grid-area: main;
+        border: 1px solid var(--border-color);
+        width: 1170px;
+    }
 
 .AccountBox {
     width: 600px;
