@@ -22,6 +22,7 @@ public class ProjectService(IProjectRepository projectRepository, IStatusService
         }
 
         var projectEntity = formData.MapTo<ProjectEntity>();
+
         var statusResult = await _statusService.GetStatusByIdAsync("1");
         var status = statusResult.Result;
 
@@ -76,6 +77,13 @@ public class ProjectService(IProjectRepository projectRepository, IStatusService
             : new ProjectResult<Project> { Success = false, StatusCode = 404, Error = $"Project '{id}' wasn't found." };
     }
 
+    public async Task<ProjectResult> RemoveAsync(string id)
+    {
+        var result = await _projectRepository.RemoveAsync(x => x.Id == id);
 
+        return result.Success
+            ? new ProjectResult { Success = true, StatusCode = 200 }
+            : new ProjectResult { Success = false, StatusCode = 500, Error = result.Error };
+    }
 
 }

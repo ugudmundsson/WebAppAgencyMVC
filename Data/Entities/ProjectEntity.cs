@@ -32,7 +32,7 @@ public class ProjectEntity
     public virtual StatusEntity Status { get; set; } = null!;
 
     [Column(TypeName = "decimal(10, 2)")]
-    public decimal Budget { get; set; }
+    public decimal? Budget { get; set; }
 
     public virtual ICollection<ProjectTeamMemberEntity> ProjectTeamMember { get; set; } = [];
 

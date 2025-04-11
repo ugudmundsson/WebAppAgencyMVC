@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebAppAssignment.Models;
 
@@ -37,6 +38,7 @@ public class AddProjectModel
     public string Status { get; set; } = null!;
 
     [Display(Name = "Budget", Prompt = "$ 0")]
+    [Column(TypeName = "decimal(10, 2)")]
     public decimal? Budget { get; set; }
 
 }

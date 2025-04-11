@@ -11,5 +11,6 @@ public class Project
     public AppUser User { get; set; } = null!;
     public Status Status { get; set; } = null!;
     public decimal Budget { get; set; }
+    public List<string> TeamMembers { get; set; } = [];
 
 }

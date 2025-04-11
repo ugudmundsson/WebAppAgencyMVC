@@ -1,4 +1,5 @@
 ﻿using Data.Data;
+using Data.Entites;
 using Data.Interfaces;
 using Data.Migrations;
 using Data.Models;
@@ -125,11 +126,6 @@ public abstract class BaseRepository<TEntity, T> : IBaseRepository<TEntity, T> w
 
 
 
-
-
-
-
-
     public virtual async Task<RepositoryResult<bool>> ExistsAsync(Expression<Func<TEntity, bool>> findBy)
     {
         var exists = await _dbSet.AnyAsync(findBy);
@@ -167,21 +163,23 @@ public abstract class BaseRepository<TEntity, T> : IBaseRepository<TEntity, T> w
 
 
     //DELETE-------------------------------------------------
-    public virtual async Task<RepositoryResult<bool>> RemoveAsync(TEntity entity)
+    public virtual async Task<RepositoryResult<bool>> RemoveAsync(Expression<Func<TEntity, bool>> expression)
     {
-        if (entity == null)
-            return new RepositoryResult<bool> { Success = false, StatusCode = 400, Error = "Entity is null" };
         try
         {
-            _dbSet.Remove(entity);
-            await _context.SaveChangesAsync();
-            return new RepositoryResult<bool> { Success = true, StatusCode = 200 };
+            var entity = await _dbSet.FirstOrDefaultAsync(expression);
+            if (entity != null)
+            {
+                _context.Remove(entity);
+                await _context.SaveChangesAsync();
+                return new RepositoryResult<bool> { Success = true, StatusCode = 200 };
+            }
         }
         catch (Exception ex)
         {
-            Debug.WriteLine(ex.Message);
-            return new RepositoryResult<bool> { Success = false, StatusCode = 500, Error = ex.Message };
+            Debug.WriteLine($"Error Removing {nameof(TEntity)} entity :: {ex.Message}");
         }
+        return new RepositoryResult<bool> { Success = false, StatusCode = 500, Error = "Error removing entity" };
     }
 
 

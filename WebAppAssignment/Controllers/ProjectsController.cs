@@ -49,6 +49,18 @@ namespace WebAppAssignment.Controllers
         }
 
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteProject(string id)
+        {
 
+                var result = await _projectService.RemoveAsync(id);
+                if (result.Success)
+                {
+                    return RedirectToAction("Projects");
+                }
+            
+            return RedirectToAction("Projects");
+        }
     }
 }

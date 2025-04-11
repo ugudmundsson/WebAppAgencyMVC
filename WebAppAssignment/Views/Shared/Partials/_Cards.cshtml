@@ -24,10 +24,13 @@
                 </div>
                 <div class="meatball-grayline"></div>
                 <div>
-                    <button class="meatball-btn">
+                    <form asp-action="DeleteProject" asp-controller="Projects" method="post">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <button type="submit" class="meatball-btn" onclick="return confirm('Are you sure?');">
                         <i class="fa-solid fa-trash"></i>
                         <p>Delete Project</p>
-                    </button>
+                        </button>
+                    </form>
                 </div>  
             </div>
          </div>
