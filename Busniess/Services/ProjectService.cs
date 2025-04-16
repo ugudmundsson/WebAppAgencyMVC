@@ -29,7 +29,7 @@ public class ProjectService(IProjectRepository projectRepository, IStatusService
         projectEntity.StatusId = status!.Id;
 
 
-        projectEntity.ProjectTeamMember = formData.AppUserId.Select(userId => new ProjectTeamMemberEntity
+        projectEntity.ProjectTeamMember = formData.Members.Select(userId => new ProjectTeamMemberEntity
         {
             AppUserId = userId,
             ProjectId = projectEntity.Id

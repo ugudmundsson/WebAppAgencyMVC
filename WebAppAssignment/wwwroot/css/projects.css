@@ -210,3 +210,19 @@
     box-shadow: 0 0 5px var(--blue-accent)
 }
 }
+
+.addproject-input-selector {
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    width: 490px;
+    height: 60px;
+    padding-left: 10px;
+    font-size: 16px;
+    color: var(--body-light);
+    &:focus
+
+{
+    outline: none;
+    box-shadow: 0 0 5px var(--blue-accent)
+}
+}

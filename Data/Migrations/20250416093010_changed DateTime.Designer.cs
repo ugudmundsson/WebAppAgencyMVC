@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250411114151_Added not null to decimal budget")]
-    partial class Addednotnulltodecimalbudget
+    [Migration("20250416093010_changed DateTime")]
+    partial class changedDateTime
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,8 +43,8 @@ namespace Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("EndDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -53,8 +53,8 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("StartDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("StatusId")
                         .IsRequired()

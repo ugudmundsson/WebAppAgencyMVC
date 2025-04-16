@@ -10,12 +10,18 @@
     <div class="project-head">
         
         <h2>Projects</h2>
-        
-        <button class="project-btn" id="openOverlayBtn">
-            <i class="fa-solid fa-plus"></i>
-            <p>Add Project</p>
-        </button>
-     
+        @if (User.IsInRole("User"))
+        {
+            <button class="project-btn" id="openOverlayBtn">
+                <i class="fa-solid fa-plus"></i>
+                <p>Add Project</p>
+            </button>
+        }
+        else 
+        {
+             <span>Login if you want<br />
+              Add or Edit a Project</span>
+        }
        </div>       
       
             <nav>
@@ -28,7 +34,7 @@
             </nav>
             <div class="cards">
             @foreach (var project in Model.Projects){
-                <partial name="Partials/_Cards" model="project" />
+                <partial name="Partials/_ProjectCards" model="project" />
             }
             </div>
     @await Html.PartialAsync("Partials/_Addproject")

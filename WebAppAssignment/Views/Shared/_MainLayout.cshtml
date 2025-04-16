@@ -40,9 +40,17 @@
                     </a>
                 </div>
                 <div class="sidenav-btn">
-                    <a class="nav-link" asp-controller="TeamMembers" asp-action="TeamMembers">
+                    <a class="nav-link" asp-controller="TeamMembers"  asp-action="TeamMembers">
                         <i class="fa-solid fa-people-group"></i>
                         Team Members
+                        @if (User.IsInRole("User"))
+                        {
+
+                        }
+                        else
+                        {
+                            <span><i class="fa-solid fa-lock"></i></span>
+                        }
                     </a>
                 </div>
             </nav>
@@ -55,7 +63,7 @@
         <div class="topnav">
             <div class="searchfield">
                  <i class="fa-solid fa-magnifying-glass"></i>
-                 <input type="text" class="searchinput" placeholder="Search anything..." />
+                 <input type="text" class="searchinput" placeholder=" Search..." />
             </div>
             <div class="settings">
                  <i class="fa-solid fa-bell"></i>

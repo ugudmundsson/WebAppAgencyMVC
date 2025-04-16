@@ -15,17 +15,20 @@ public class ProjectRepository(AppDbContext context) : BaseRepository<ProjectEnt
     public override async Task<RepositoryResult<IEnumerable<Project>>> GetAllAsync(
     bool orderByDescending = false,
     Expression<Func<ProjectEntity, object>>? sortBy = null,
-    Expression<Func<ProjectEntity, bool>>? filterBy = null,
+    Expression<Func<ProjectEntity, bool>>? where = null,
     params Expression<Func<ProjectEntity, object>>[] includes)
     {
         IQueryable<ProjectEntity> query = _dbSet;
 
-        if (filterBy != null)
-            query = query.Where(filterBy);
+        if (where != null)
+            query = query.Where(where);
 
         if (includes != null && includes.Length > 0)
             foreach (var include in includes)
                 query = query.Include(include);
+
+        query = query.Include(e => e.ProjectTeamMember).ThenInclude(pt => pt.AppUser);
+        
 
         if (sortBy != null)
             query = orderByDescending ? query.OrderByDescending(sortBy) : query.OrderBy(sortBy);
@@ -36,9 +39,10 @@ public class ProjectRepository(AppDbContext context) : BaseRepository<ProjectEnt
         {
             Id = entity.Id,
             ProjectName = entity.ProjectName,
-            Description = entity.Description,
             ClientName = entity.ClientName,
+            Description = entity.Description,
             EndDate = entity.EndDate,
+            StartDate = entity.StartDate,
             TeamMembers = entity.ProjectTeamMember
                 .Select(pt => pt.AppUser.FirstName).ToList()
         }).ToList();

@@ -40,8 +40,8 @@ namespace Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("EndDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -50,8 +50,8 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("StartDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("StatusId")
                         .IsRequired()

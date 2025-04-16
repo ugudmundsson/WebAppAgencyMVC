@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Domain.Models;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebAppAssignment.Models;
@@ -20,22 +21,22 @@ public class AddProjectModel
     [Display(Name = "Description", Prompt = "Type something")]
     public string? Description { get; set; }
 
-   
+
     [Display(Name = "Start Date", Prompt = "Start Date")]
     [DataType(DataType.Date)]
-    public string StartDate { get; set; } = null!;
+    public DateTime StartDate { get; set; } = DateTime.Now;
 
-    
+
     [Display(Name = "End Date", Prompt = "End Date")]
     [DataType(DataType.Date)]
-    public string EndDate { get; set; } = null!;
+    public DateTime EndDate { get; set; } = DateTime.Now;
 
-    
+
     [Display(Name = "Members", Prompt = "Members")]
-    public string Members { get; set; } = null!;
+    public List<string> Members { get; set; } = [];
 
     [Display(Name = "Status", Prompt = "Status")]
-    public string Status { get; set; } = null!;
+    public int StatusId { get; set; }
 
     [Display(Name = "Budget", Prompt = "$ 0")]
     [Column(TypeName = "decimal(10, 2)")]

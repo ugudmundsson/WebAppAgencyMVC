@@ -4,3 +4,12 @@
     padding-top: 2rem;
     padding-left: 2rem;
 }
+
+.grid-meatballs-members {
+    grid-row: 1 / 1;
+    grid-column: 2 / 3;
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    right: 1.5rem;
+}

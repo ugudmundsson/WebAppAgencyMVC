@@ -11,13 +11,13 @@
             </div>
            
             
-            <form method="post" asp-controller="Projects" asp-action="Projects" novalidate>
+            <form method="post" enctype="multipart/form-data" asp-controller="Projects" asp-action="Projects" novalidate>
                 <div class="upload">
                     <div class="image-previewer">
                         <div class="icon-circle">
                             <i class="fa-solid fa-camera"></i>
                                 <img src="" class="image-preview" />
-                                <input asp-for="Form.Image" accept="image/*" class="hide" />
+                                <input asp-for="Form.Image" accept="image/*" class="hide" type="file" />
                         </div>
                     </div>
                 </div>
@@ -58,13 +58,17 @@
                     </div>
                 </div>
                 <div>
-                    <label asp-for="Members" class="signin-label"></label>
-                    @Html.ListBoxFor(model => model.Members, new MultiSelectList(Model.Members, "Id", "FullName" ), new { @class = "addproject-input" })
-                    <span asp-validation-for="Members"></span>
+                    <label asp-for="Form.Members" class="signin-label"></label>
+                    <select asp-for="Form.Members"
+                            asp-items="@(new MultiSelectList(Model.TeamMembers, "Id", "FullName"))"
+                            multiple
+                            class="addproject-input-selector"
+                            size="4">
+                   </select>
                 </div>
                     <div> 
                         <label asp-for="Statuses" class="signin-label"></label>
-                        @Html.DropDownListFor(model => model.Statuses, new SelectList(Model.Statuses, "Id", "StatusName"), "- - Select Status - -", new { @class = "addproject-input" })
+                        @Html.DropDownListFor(model => model.Form.StatusId, new SelectList(Model.Statuses, "Id", "StatusName"), "- - Select Status - -", new { @class = "addproject-input" })
                         <span asp-validation-for="Statuses"></span>
                     </div>
                 <div>

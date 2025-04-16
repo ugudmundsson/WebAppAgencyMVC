@@ -10,7 +10,7 @@
         <h1>TeamMember</h1>
             <div class="teammembers-container">
                 <div class="cards">
-                    @foreach (var member in Model.Members)
+                @foreach (var member in Model.TeamMembers)
                     {
                         <partial name="Partials/_Users" model="member" />
                     }

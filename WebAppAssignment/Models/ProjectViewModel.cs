@@ -7,7 +7,7 @@ public class ProjectViewModel
 
     public IEnumerable<Status> Statuses { get; set; } = [];
 
-    public IEnumerable<AppUser> Members { get; set; } = [];
+    public IEnumerable<AppUser> TeamMembers { get; set; } = [];
 
     public IEnumerable<Project> Projects { get; set; } = [];
 
