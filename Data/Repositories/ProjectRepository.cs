@@ -40,7 +40,7 @@ public class ProjectRepository(AppDbContext context) : BaseRepository<ProjectEnt
             Id = entity.Id,
             ProjectName = entity.ProjectName,
             ClientName = entity.ClientName,
-            Description = entity.Description,
+            Description = entity.Description!,
             EndDate = entity.EndDate,
             StartDate = entity.StartDate,
             TeamMembers = entity.ProjectTeamMember
