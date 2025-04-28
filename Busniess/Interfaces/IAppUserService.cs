@@ -8,5 +8,6 @@ namespace Busniess.Interfaces
         Task<AppUserResult> AddUserToRole(string userID, string roleName);
         Task<AppUserResult> CreateUserAsync(SignUpFormData formData, string roleName = "User");
         Task<AppUserResult> GetAppUsersAsync();
+        Task<ProjectResult> RemoveUserAsync(string id);
     }
 }

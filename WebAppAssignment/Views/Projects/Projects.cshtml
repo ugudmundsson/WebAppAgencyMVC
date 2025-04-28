@@ -25,17 +25,56 @@
        </div>       
       
             <nav>
-                <div class="projectnav">
-                    <a id="all" asp-controller="Status" asp-action="All">ALL [3]</a>
-                    <a id="started" asp-controller="Status" asp-action="Started">STARTED [1]</a>
-                    <a id="completed" asp-controller="Status" asp-action="Completed">COMPLETED [10]</a>
-                </div>
+        <div class="projectnav">
+            <a id="all" href="#" onclick="loadProjects('All')">ALL [@(Model.Projects?.Count() ?? 0)]</a>
+            <a id="started" href="#" onclick="loadProjects('Started')">STARTED [@(Model.Projects?.Count(p => p.Status.Id == "1") ?? 0)]</a>
+            <a id="completed" href="#" onclick="loadProjects('Completed')">COMPLETED [@(Model.Projects?.Count(p => p.Status.Id == "2") ?? 0)]</a>
+        </div>
                 <div class="graynavline"></div>
             </nav>
             <div class="cards">
-            @foreach (var project in Model.Projects){
-                <partial name="Partials/_ProjectCards" model="project" />
-            }
+        <div id="project-list-container">
+            
+        </div>
             </div>
     @await Html.PartialAsync("Partials/_Addproject")
+    <div id="filledit-overlay">
+        @await Html.PartialAsync("Partials/_EditProjectPartial", Model)
+    </div>
 </div>
+
+
+
+<script>
+    function loadProjects(action) {
+        const container = document.getElementById('project-list-container');
+        fetch(`/Status/${action}`)
+            .then(response => response.text())
+            .then(html => {
+                container.innerHTML = html;
+            })
+            .catch(error => console.error('Error loading projects:', error));
+    }
+
+    // Load all projects by default on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        loadProjects('All');
+    });
+</script>
+
+
+
+@* <nav>
+    <div class="projectnav">
+        <a id="all" asp-controller="Status" asp-action="All">ALL [@(Model.Projects?.Count() ?? 0)]</a>
+        <a id="started" asp-controller="Status" asp-action="Started">STARTED [@(Model.Projects?.Count(p => p.Status.Id == "1") ?? 0)]</a>
+        <a id="completed" asp-controller="Status" asp-action="Completed">COMPLETED [@(Model.Projects?.Count(p => p.Status.Id == "2") ?? 0)]</a>
+    </div>
+    <div class="graynavline"></div>
+</nav>
+<div class="cards">
+    @foreach (var project in Model.Projects!)
+    {
+        <partial name="Partials/_ProjectCards" model="project" />
+    }
+</div> *@

@@ -32,5 +32,20 @@ namespace WebAppAssignment.Controllers
             };
             return View(projectViewModel);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+
+            var result = await _appUserService.RemoveUserAsync(id);
+            if (result.Success)
+            {
+                return RedirectToAction("TeamMembers");
+            }
+
+            return RedirectToAction("TeamMembers");
+        }
+
     }
 }

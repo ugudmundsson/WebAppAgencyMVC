@@ -1,0 +1,9 @@
+﻿@using Domain.Models
+@model IEnumerable<Project>
+
+<div class="cards">
+    @foreach (var project in Model)
+    {
+        <partial name="Partials/_ProjectCards" model="project" />
+    }
+</div>

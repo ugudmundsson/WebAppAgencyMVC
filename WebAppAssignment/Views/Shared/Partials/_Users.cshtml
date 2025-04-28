@@ -14,20 +14,23 @@
                 <div class="meatballs"></div>
                 <div class="meatballs"></div>
             </div>
-            <div class="project-meatballs-dropdown-content">
+            <div class="teammember-meatballs-dropdown-content">
                 <div>
-                    <button class="meatball-btn">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                        <p>Edit</p>
-                    </button>
+                    <form asp-action="UpdateProject" asp-controller="Projects" method="post">
+                        <button class="meatball-btn">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                            <p>Edit</p>
+                        </button>
+                    </form>
                 </div>
                 <div class="meatball-grayline"></div>
-                <div>
-                    <button class="meatball-btn">
+                <form asp-action="DeleteUser" asp-controller="TeamMembers" method="post">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <button type="submit" class="meatball-btn-delete meatball-btn" onclick="return confirm('Are you sure?');">
                         <i class="fa-solid fa-trash"></i>
                         <p>Delete Project</p>
                     </button>
-                </div>
+                </form>
             </div>
         </div>
         <div class="user-jobtask">

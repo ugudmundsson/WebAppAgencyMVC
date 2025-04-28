@@ -13,3 +13,23 @@
     justify-content: end;
     right: 1.5rem;
 }
+
+.teammember-meatballs-dropdown-content {
+    display: none;
+    border-radius: 15px;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 230px;
+    min-height: 104px;
+    box-shadow: 8px 8px 16px 8px rgba(0,0,0,0.2);
+    padding: 7px 7px;
+    z-index: 1;
+    right: .5rem;
+    top: 2.2rem;
+}
+
+.project-meatballs:hover .teammember-meatballs-dropdown-content {
+    display: block;
+}
+
+

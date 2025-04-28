@@ -102,5 +102,34 @@ async function processImage(file, imagePreview, previewer, imageSize = 150) {
 
 
 
-//------------------- EDITOR ----------------
+//------------------- EDIT PROJECT ----------------
+
+
+document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('[data-url]').forEach(button => {
+            button.addEventListener('click', async function () {
+                const url = this.getAttribute('data-url');
+                const target = document.getElementById('filledit-overlay');
+                const response = await fetch(url);
+                const html = await response.text();
+                target.innerHTML = html;
+
+                const modal = target.querySelector('#edit-overlay');
+
+                if (modal) {
+                    modal.style.display = 'block';
+                }
+
+                const closeBtn = target.querySelector('#closeeditBtn');
+                closeBtn.addEventListener('click', function () {
+                    modal.style.display = 'none';
+                    target.innerHTML = '';
+                });
+
+                
+            })
+        })
+    });
+
+
 

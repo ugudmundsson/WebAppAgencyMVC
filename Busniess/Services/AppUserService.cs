@@ -17,11 +17,9 @@ public class AppUserService(IAppUserRepository appuserRepository, UserManager<Ap
     private readonly UserManager<AppUserEntity> _userManager = userManager;
     private readonly RoleManager<IdentityRole> _roleManager = roleManager;
 
-    public async Task<AppUserResult> GetAppUsersAsync()
-    {
-        var result = await _appuserRepository.GetAllAsync();
-        return result.MapTo<AppUserResult>();
-    }
+
+
+    // -------------------- CREATE ----------------------
 
     public async Task<AppUserResult> AddUserToRole(string userID, string roleName)
     {
@@ -73,6 +71,35 @@ public class AppUserService(IAppUserRepository appuserRepository, UserManager<Ap
             Debug.WriteLine(ex.Message);
             return new AppUserResult { Success = false, StatusCode = 500, Error = ex.Message };
         }
+    }
+
+
+    // -------------------- READ ----------------------
+    public async Task<AppUserResult> GetAppUsersAsync()
+    {
+        var result = await _appuserRepository.GetAllAsync();
+        return result.MapTo<AppUserResult>();
+    }
+
+
+
+    // -------------------- UPDATE-----------------------
+
+
+
+
+
+
+
+
+    // -------------------- DELETE ----------------------
+    public async Task<ProjectResult> RemoveUserAsync(string id)
+    {
+        var result = await _appuserRepository.RemoveAsync(x => x.Id == id);
+
+        return result.Success
+            ? new ProjectResult { Success = true, StatusCode = 200 }
+            : new ProjectResult { Success = false, StatusCode = 500, Error = result.Error };
     }
 
 

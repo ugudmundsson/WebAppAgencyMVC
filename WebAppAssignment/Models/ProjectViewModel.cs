@@ -10,5 +10,6 @@ public class ProjectViewModel
     public IEnumerable<AppUser> TeamMembers { get; set; } = [];
 
     public IEnumerable<Project> Projects { get; set; } = [];
+    public Dictionary<string, int> StatusCounts { get; set; } = new Dictionary<string, int>();
 
 }

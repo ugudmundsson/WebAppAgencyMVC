@@ -19,12 +19,10 @@
                 </div>
                 <div class="project-meatballs-dropdown-content">
                     <div>
-                        <form asp-action="UpdateProject" asp-controller="Projects" method="post">
-                            <button class="meatball-btn">
+                        <button type="button" data-modal="true" data-target="#edit-overlay" class="meatball-btn" data-url="@Url.Action("UpdateProject", "Projects", new { id = Model.Id })">
                                 <i class="fa-regular fa-pen-to-square"></i>
                                 <p>Edit</p>
-                            </button>
-                        </form>
+                        </button>
                     </div>
                     <div>
                         <form asp-action="UpdateProject" asp-controller="Projects" method="post">
@@ -68,3 +66,7 @@
          </div>
     </div>
 </div>
+
+
+
+

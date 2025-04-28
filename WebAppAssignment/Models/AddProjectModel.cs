@@ -6,6 +6,7 @@ namespace WebAppAssignment.Models;
 
 public class AddProjectModel
 {
+    public string Id { get; set; } = null!;
 
     [DataType(DataType.Upload)]
     public IFormFile? Image { get; set; }
@@ -36,7 +37,7 @@ public class AddProjectModel
     public List<string> Members { get; set; } = [];
 
     [Display(Name = "Status", Prompt = "Status")]
-    public int StatusId { get; set; }
+    public string StatusId { get; set; } = null!;
 
     [Display(Name = "Budget", Prompt = "$ 0")]
     [Column(TypeName = "decimal(10, 2)")]

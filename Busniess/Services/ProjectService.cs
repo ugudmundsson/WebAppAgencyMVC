@@ -14,6 +14,9 @@ public class ProjectService(IProjectRepository projectRepository, IStatusService
     private readonly IStatusService _statusService = statusService;
 
 
+
+
+    // ------------------ CREATE -----------------------------
     public async Task<ProjectResult> CreateProjectAsync(AddProjectFormData formData)
     {
         if (formData == null)
@@ -46,6 +49,8 @@ public class ProjectService(IProjectRepository projectRepository, IStatusService
 
 
 
+    // -------------------- READ ----------------------
+
     public async Task<ProjectResult<IEnumerable<Project>>> GetProjectsAsync()
     {
         var response = await _projectRepository.GetAllAsync
@@ -77,6 +82,60 @@ public class ProjectService(IProjectRepository projectRepository, IStatusService
             : new ProjectResult<Project> { Success = false, StatusCode = 404, Error = $"Project '{id}' wasn't found." };
     }
 
+    public async Task<ProjectResult<IEnumerable<Project>>> GetProjectsByStatusIdAsync(string statusId)
+    {
+        var response = await _projectRepository.GetAllAsync
+        (
+            orderByDescending: true,
+            sortBy: s => s.CreatedAt,
+            where: i => i.StatusId == statusId,
+            i => i.ProjectTeamMember,
+            i => i.Status
+        );
+        return new ProjectResult<IEnumerable<Project>> { Success = true, StatusCode = 200, Result = response.Result };
+    }
+
+
+
+    // --------------------- UPDATE -----------------
+
+
+    public async Task<ProjectResult> UpdateAsync(EditProjectFormData formData)
+    {
+      
+            var projectEntity = new ProjectEntity{
+
+                Id = formData.Id,
+                Image = formData.Image,
+                ProjectName = formData.ProjectName,
+                ClientName = formData.ClientName,
+                Description = formData.Description,
+                StartDate = formData.StartDate,
+                EndDate = formData.EndDate,
+                Budget = formData.Budget,
+                StatusId = formData.StatusId,
+                ProjectTeamMember = formData.Members.Select(userId => new ProjectTeamMemberEntity
+                {
+                    AppUserId = userId,
+                    ProjectId = formData.Id,
+                }).ToList()
+            };
+        var result = await _projectRepository.UpdateWithAll(projectEntity);
+        return result.Success
+            ? new ProjectResult { Success = true, StatusCode = 200 }
+            : new ProjectResult { Success = false, StatusCode = 500, Error = result.Error };
+    }
+
+ 
+
+
+
+
+
+
+
+
+    // --------------------- DELETE ------------------
     public async Task<ProjectResult> RemoveAsync(string id)
     {
         var result = await _projectRepository.RemoveAsync(x => x.Id == id);

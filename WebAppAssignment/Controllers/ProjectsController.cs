@@ -1,4 +1,5 @@
 ﻿using Busniess.Interfaces;
+using Busniess.Models;
 using Data.Data;
 using Domain.Extensions;
 using Domain.Models;
@@ -81,5 +82,45 @@ public class ProjectsController(IProjectService projectService, IStatusService s
 
         return RedirectToAction("Projects");
     }
+
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> UpdateProject(ProjectViewModel model)
+    {
+        var project = model.Form.MapTo<EditProjectFormData>();
+        var result = await _projectService.UpdateAsync(project);
+        if (result.Success)
+        {
+            return RedirectToAction("Projects");
+        }
+        return RedirectToAction("Projects");
+    }
+
+
+
+
+
+    [HttpGet]
+    public async Task<IActionResult> UpdateProject(string id)
+    {
+        var projectsResult = await _projectService.GetProjectAsync(id);
+        var statusesResult = await _statusService.GetStatusesAsync();
+        var membersResult = await _appUserService.GetAppUsersAsync();
+
+        
+        var status = statusesResult.Result?.ToList() ?? new List<Status>();
+        var member = membersResult.Result?.ToList() ?? new List<AppUser>();
+
+        var projectViewModel = new ProjectViewModel
+        {
+            Form = projectsResult.Result!.MapTo<AddProjectModel>(),
+            Projects = new List<Project>(),
+            Statuses = status,
+            TeamMembers = member,
+        };
+        return PartialView("Partials/_EditProjectPartial", projectViewModel);
+    }
+
 
 }
