@@ -11,14 +11,15 @@ public class AddProjectModel
     [DataType(DataType.Upload)]
     public IFormFile? Image { get; set; }
 
+    [Required(ErrorMessage = "Project Name is required")]
     [Display(Name = "Project Name", Prompt = "Project Name")]
     public string ProjectName { get; set; } = null!;
 
-   
+    [Required(ErrorMessage = "Client Name is required")]
     [Display(Name = "Client Name", Prompt = "Client Name")]
     public string ClientName { get; set; } = null!;
 
-   
+    [Required(ErrorMessage = "Project Description is required")]
     [Display(Name = "Description", Prompt = "Type something")]
     public string? Description { get; set; }
 
@@ -32,7 +33,7 @@ public class AddProjectModel
     [DataType(DataType.Date)]
     public DateTime EndDate { get; set; } = DateTime.Now;
 
-
+    [Required(ErrorMessage = "Team Members is required")]
     [Display(Name = "Members", Prompt = "Members")]
     public List<string> Members { get; set; } = [];
 

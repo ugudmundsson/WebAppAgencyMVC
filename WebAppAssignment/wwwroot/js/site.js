@@ -1,6 +1,6 @@
 ﻿
 
-// OVERLAY Logout
+// ---------------------OVERLAY Logout-------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
     var logoutBtn = document.getElementById("logoutBtn");
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// OVERLAY Addproject
+// ------------------OVERLAY Addproject----------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
     const imageSize = 150
@@ -64,10 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-
-
-
-
 async function loadImage(file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader()
@@ -100,12 +96,27 @@ async function processImage(file, imagePreview, previewer, imageSize = 150) {
     }
 }
 
+//------------ LOADING PROJECT STATUSES -----------------
+
+function loadProjects(action) {
+    const container = document.getElementById('project-list-container');
+    fetch(`/Status/${action}`)
+        .then(response => response.text())
+        .then(html => {
+            container.innerHTML = html;
+            bindEditButtons();
+        })
+        .catch(error => console.error('Error loading projects:', error));
+}
+document.addEventListener('DOMContentLoaded', () => {
+    loadProjects('All');
+});
 
 
 //------------------- EDIT PROJECT ----------------
 
 
-document.addEventListener("DOMContentLoaded", function () {
+function bindEditButtons() {
         document.querySelectorAll('[data-url]').forEach(button => {
             button.addEventListener('click', async function () {
                 const url = this.getAttribute('data-url');
@@ -129,7 +140,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 
             })
         })
-    });
+    };
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    loadProjects('All'); 
+    bindEditButtons();   
+});

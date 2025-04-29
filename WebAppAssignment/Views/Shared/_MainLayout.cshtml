@@ -19,10 +19,7 @@
     @* <link rel="stylesheet" href="~/WebAppAgency.styles.css" asp-append-version="true" /> *@
 </head>
 <body>
-    <div class="hero container" >
-       
-        
-        
+    <div class="hero container bg-img" >      
         <div class="sidenav">
             <div>
                 <a class="sidenav-a" asp-controller="Hero" asp-action="Hero">
@@ -37,6 +34,14 @@
                     <a class="nav-link" asp-controller="Projects" asp-action="Projects">
                         <i class="fa-solid fa-briefcase"></i>
                         Projects
+                        @if (User.IsInRole("User"))
+                        {
+
+                        }
+                        else
+                        {
+                            <span><i class="fa-solid fa-lock"></i></span>
+                        }
                     </a>
                 </div>
                 <div class="sidenav-btn">
@@ -94,7 +99,7 @@
         <div class="main">
             @RenderBody()
         </div>
-        
+      
     </div>
     
 </body>

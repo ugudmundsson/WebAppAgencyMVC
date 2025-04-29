@@ -18,8 +18,8 @@ public class ProjectsController(IProjectService projectService, IStatusService s
     private readonly IProjectService _projectService = projectService;
     private readonly IStatusService _statusService = statusService;
     private readonly IAppUserService _appUserService = appUserService;
-    
 
+    [Authorize(Roles = "User")]
     public async Task<IActionResult> Projects()
     {
         var projectsResult = await _projectService.GetProjectsAsync();
