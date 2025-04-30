@@ -19,7 +19,7 @@ public class AddProjectModel
     [Display(Name = "Client Name", Prompt = "Client Name")]
     public string ClientName { get; set; } = null!;
 
-    [Required(ErrorMessage = "Project Description is required")]
+    
     [Display(Name = "Description", Prompt = "Type something")]
     public string? Description { get; set; }
 

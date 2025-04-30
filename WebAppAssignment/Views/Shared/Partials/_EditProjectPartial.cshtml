@@ -22,12 +22,12 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="vali-fields">
                     <label asp-for="Form.ProjectName" class="signin-label"></label>
                     <input asp-for="Form.ProjectName" class="addproject-input" />
                     <span asp-validation-for="Form.ProjectName"></span>
                 </div>
-                <div>
+                <div class="vali-fields">
                     <label asp-for="Form.ClientName" class="signin-label"></label>
                     <input asp-for="Form.ClientName" class="addproject-input" />
                     <span asp-validation-for="Form.ClientName"></span>
@@ -68,10 +68,12 @@
                     <span asp-validation-for="Form.Budget"></span>
                 </div>
                 <div>
-                    <button type="submit" class="create-btn">Update Project</button>
+                    <button type="submit" class="create-btn">Save Project</button>
                 </div>
             </form>
 
         </div>
     </div>
 </div>
+
+@await Html.PartialAsync("_ValidationPartial")

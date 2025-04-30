@@ -21,12 +21,12 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="vali-fields">
                     <label asp-for="Form.ProjectName" class="signin-label"></label>
                     <input asp-for="Form.ProjectName" class="addproject-input" />
                     <span asp-validation-for="Form.ProjectName"></span>
                 </div>
-                <div>
+                <div class="vali-fields">
                     <label asp-for="Form.ClientName" class="signin-label"></label>
                     <input asp-for="Form.ClientName" class="addproject-input" />
                     <span asp-validation-for="Form.ClientName"></span>
@@ -56,11 +56,6 @@
                             size="4">
                    </select>
                 </div>
-@*                     <div> 
-                        <label asp-for="Form.StatusId" class="signin-label"></label>
-                        @Html.DropDownListFor(model => model.Form.StatusId, new SelectList(Model.Statuses, "Id", "StatusName"), "- - Select Status - -", new { @class = "addproject-input" })
-                        <span asp-validation-for="Form.StatusId"></span>
-                    </div> *@
                 <div>
                     <label asp-for="Form.Budget" class="signin-label"></label>
                     <input type="number" asp-for="Form.Budget" class="addproject-input" />
@@ -75,47 +70,5 @@
     </div>
 </div>
 
-@* <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        handleDescription('#description-editor', '#description-toolbar', 'Form.Description', '@Html.Raw(ViewBag.RichContent ?? "")')
-    })
-    
-    
-    function handleDescription(descriptionEditorId,  descriptionToolId, textareaId, content) {
-        const textarea = document.getElementById(textareaId)
 
-        const quill = new Quill(descriptionEditorId, {
-            modules: {
-                syntax: true,
-                toolbar: descriptionToolId
-            },
-            placeholder: 'Type something...',
-            theme: 'snow'
-        })
-        
-        if(content)
-            quill.root.innerHTML = content;
-
-        quill.on('text-change', () => {
-            textarea.value = quill.root.innerHTML;
-        })
-    }
-</script> *@
-
-
-
-
-@* <div>
-    <label asp-for="Form.Description" class="signin-label"></label>
-    <div class="description-textarea">
-        <textarea id="description" asp-for="Form.Description"></textarea>
-        <div id="description-editor" class="description-editor"></div>
-        <div id="description-toolbar">
-            <span class="ql-formats">
-                <button class="ql-bold"></button>
-                <button class="ql-italic"></button>
-                <button class="ql-underline"></button>
-            </span>
-        </div>
-    </div>
-</div> *@
+@await Html.PartialAsync("_ValidationPartial")

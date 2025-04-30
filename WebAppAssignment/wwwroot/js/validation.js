@@ -31,11 +31,7 @@ const validateField = (field) => {
 }
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
-
-    if (!form) return;
-
+const ValidateForm = (form) => {
     const fields = form.querySelectorAll("input[data-val='true'], textarea[data-val='true'], select[data-val='true']");
 
     fields.forEach(field => {
@@ -47,4 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
             validateField(field);
         });
     });
-});
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    if (form) {
+        ValidateForm(form);
+    }
+})

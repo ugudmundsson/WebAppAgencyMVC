@@ -19,12 +19,12 @@
     font-weight: var(--font-semibold);
     &:hover
     {
+    color: var(--blue-accent);
     font-size: 15px;
     background: transparent;
     border-radius: 20px 20px 0 0;
     height: 3px;
     box-shadow: 0 28px 0 0 var(--blue-accent);
-    font-family: sans-serif;
     }
 }
 

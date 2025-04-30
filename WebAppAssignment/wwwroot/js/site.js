@@ -104,19 +104,17 @@ function loadProjects(action) {
         .then(response => response.text())
         .then(html => {
             container.innerHTML = html;
-            bindEditButtons();
+            bindEditButton();
         })
         .catch(error => console.error('Error loading projects:', error));
 }
-document.addEventListener('DOMContentLoaded', () => {
-    loadProjects('All');
-});
+
 
 
 //------------------- EDIT PROJECT ----------------
 
 
-function bindEditButtons() {
+function bindEditButton() {
         document.querySelectorAll('[data-url]').forEach(button => {
             button.addEventListener('click', async function () {
                 const url = this.getAttribute('data-url');
@@ -129,6 +127,8 @@ function bindEditButtons() {
 
                 if (modal) {
                     modal.style.display = 'block';
+                    
+
                 }
 
                 const closeBtn = target.querySelector('#closeeditBtn');
@@ -146,5 +146,5 @@ function bindEditButtons() {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadProjects('All'); 
-    bindEditButtons();   
+    bindEditButton();   
 });

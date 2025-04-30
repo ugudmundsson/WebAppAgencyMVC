@@ -18,27 +18,27 @@
             </div>
         </div>
         <form method="post" asp-controller="Auth" asp-action="SignUp" novalidate>
-          <div>
+          <div class="vali-fields">
                 <label asp-for="FirstName" class="signin-label"></label>
                 <input asp-for="FirstName" class="logininput" />
                 <span asp-validation-for="FirstName"></span>
             </div>
-            <div>
+            <div class="vali-fields">
                 <label asp-for="LastName" class="signin-label"></label>
                 <input asp-for="LastName" class="logininput" />
                 <span asp-validation-for="LastName"></span>
             </div>
-            <div>
+            <div class="vali-fields">
                 <label asp-for="Email" class="signin-label"></label>
                 <input asp-for="Email" class="logininput" />
                 <span asp-validation-for="Email"></span>
             </div>
-            <div>
+            <div class="vali-fields">
                 <label asp-for="Password" class="signin-label"></label>
                 <input asp-for="Password" class="logininput" />
                 <span asp-validation-for="Password"></span>
             </div>
-            <div>
+            <div class="vali-fields">
                 <label asp-for="ConfirmPassword" class="signin-label"></label>
                 <input asp-for="ConfirmPassword" class="logininput" />
                 <span asp-validation-for="ConfirmPassword"></span>

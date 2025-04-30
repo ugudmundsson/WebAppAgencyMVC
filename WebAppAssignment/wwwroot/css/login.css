@@ -210,19 +210,32 @@ input[type='checkbox']:checked:after {
     text-decoration: none;
 }
 
-.field-validation-error {
-    color: var(--error-red);
-    font-size: 10px;
-    display: flex;
-    justify-content: start;
-    position: absolute;
-    padding-left: 15px;
+.input-validation-error {
+    background-color: rgba(255, 0, 0, 0.1);
+    &:focus
+{
+    box-shadow: 0 0 5px var(--error-red);
+}
 }
 
-.input-validation-error {
-    background-color: rgba(255, 0, 0, 0.2);
-    
+.vali-fields {
+    position: relative
 }
+
+form .field-validation-error {
+    position: absolute;
+    z-index: 1;
+    top: 2.7rem;
+    right: 0.2rem;
+    font-size: 0.8em;
+    color: var(--red);
+    padding-right: 1rem;
+    
+
+}
+
+
+
 
 
 
