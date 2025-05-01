@@ -11,7 +11,7 @@ public class Project
     public DateTime EndDate { get; set; }
     public AppUser User { get; set; } = null!;
     public Status Status { get; set; } = null!;
-    public decimal Budget { get; set; }
+    public decimal? Budget { get; set; }
     public List<string> TeamMembers { get; set; } = new List<string>();
     public int DaysLeft => (EndDate - DateTime.Now).Days;
 

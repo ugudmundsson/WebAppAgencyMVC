@@ -112,8 +112,8 @@ public class ProjectService(IProjectRepository projectRepository, IStatusService
                 Description = formData.Description,
                 StartDate = formData.StartDate,
                 EndDate = formData.EndDate,
-                Budget = formData.Budget,
                 StatusId = formData.StatusId,
+                Budget = formData.Budget,
                 ProjectTeamMember = formData.Members.Select(userId => new ProjectTeamMemberEntity
                 {
                     AppUserId = userId,
