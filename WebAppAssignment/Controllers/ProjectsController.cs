@@ -70,7 +70,6 @@ public class ProjectsController(IProjectService projectService, IStatusService s
 
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteProject(string id)
     {
 
@@ -85,7 +84,6 @@ public class ProjectsController(IProjectService projectService, IStatusService s
 
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
     public async Task<IActionResult> UpdateProject(ProjectViewModel model)
     {
         var project = model.Form.MapTo<EditProjectFormData>();

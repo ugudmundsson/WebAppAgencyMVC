@@ -85,6 +85,7 @@ public class AuthController(SignInManager<AppUserEntity> signInManager, IAuthSer
 
     public new async Task<IActionResult> SignOut()
     {
+
         await _signInManager.SignOutAsync();
         return RedirectToAction("Hero", "Hero");
     }

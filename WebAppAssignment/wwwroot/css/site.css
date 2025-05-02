@@ -334,6 +334,10 @@ a:visited {
     
 }
 
+.login-as {
+    font-size: 14px;
+}
+
 .profile-settings {
     display: flex;
     align-items: center;
@@ -343,7 +347,6 @@ a:visited {
     border-radius: 10px;
     padding-left: 13px;
     gap: 15px;
-
 }
 
 .darkmode-settings {

@@ -1,10 +1,15 @@
-﻿<div id="logout-overlay" class="overlay-logout">
+﻿
+
+<div id="logout-overlay" class="overlay-logout">
     <div class="overlay-content-logout">
         <span class="close-btn" id="closelogoutBtn">X</span>
         
         <div class="profile-settings">
             <img src="/Images/portrait1.svg" />
-            <h6>Ulf Gudmundsson</h6>
+            <div>
+                <p>Logged-in as:</p>
+                <h6 class="login-as">@User.Identity.Name</h6>
+            </div>
         </div>
     
     <div class="darkmode-settings">
