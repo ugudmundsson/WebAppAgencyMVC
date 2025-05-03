@@ -9,6 +9,6 @@ public class AddProjectFormData
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public List<string> Members { get; set; } = [];
-    public int StatusId { get; set; }
+    public string StatusId { get; set; } = null!;
     public decimal? Budget { get; set; }
 }

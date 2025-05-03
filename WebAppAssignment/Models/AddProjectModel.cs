@@ -38,7 +38,7 @@ public class AddProjectModel
     public List<string> Members { get; set; } = [];
 
     [Display(Name = "Status", Prompt = "Status")]
-    public string StatusId { get; set; } = null!;
+    public string? StatusId { get; set; }
 
     [Display(Name = "Budget", Prompt = "$ 0")]
     [Column(TypeName = "decimal(10, 2)")]
